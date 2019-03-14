@@ -22,7 +22,7 @@ module.exports = {
 then
 
 ```
-yarn js-env-run ./env.js <some command>
+yarn js-env-run <some command>
 ```
 
 it will then execute `<some command>` using the environment variables that were exported from `env.js`
