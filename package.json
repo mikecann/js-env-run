@@ -3,14 +3,12 @@
   "version": "1.0.0",
   "description": "Loads environment variables from a given ts file then executes the passed command",
   "bin": {
-    "ts-env-cmd": "ts-node ./src/index.ts"
+    "ts-env-cmd": "-r ts-node/register ./index.ts"
   },
   "scripts": {
     "build": "tsc",
     "dev": "yarn build -w",
-    "compile": "tsc --noEmit",
-    "cli": "ts-env-cmd",
-    "test": "ts-node ./src/index.ts"
+    "test": "node -r ts-node/register ./index.ts"
   },
   "main": "index.js",
   "repository": "git@github.com:mikecann/ts-env-cmd.git",
