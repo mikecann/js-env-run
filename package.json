@@ -1,16 +1,16 @@
 {
   "name": "ts-env-cmd",
   "version": "1.0.0",
-  "description": "Loads environment variables from a given ts file then executes the passed command",
+  "description": "Loads environment variables from a given file then executes the passed command",
   "bin": {
-    "ts-env-cmd": "cli.js"
+    "with-env": "lib/inex.js"
   },
   "scripts": {
     "build": "tsc",
     "dev": "yarn build -w",
     "test": "node ./lib/index.js"
   },
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": "git@github.com:mikecann/ts-env-cmd.git",
   "author": "Mike Cann <mike.cann@gmail.com>",
   "license": "MIT",

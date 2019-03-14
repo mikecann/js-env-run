@@ -1,6 +1,6 @@
 console.log("hello");
 
-export default {
+module.exports = {
   HELLO: "foo",
   WORLD: 123
 };
