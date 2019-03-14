@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "Loads environment variables from a given file then executes the passed command",
   "bin": {
-    "with-env": "lib/inex.js"
+    "js-env": "lib/cli.js"
   },
   "scripts": {
     "build": "tsc",
     "dev": "yarn build -w",
     "test": "node ./lib/index.js"
   },
-  "main": "lib/index.js",
+  "main": "lib/cli.js",
   "repository": "git@github.com:mikecann/ts-env-cmd.git",
   "author": "Mike Cann <mike.cann@gmail.com>",
   "license": "MIT",
