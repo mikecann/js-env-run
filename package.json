@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Loads environment variables from a given file then executes the passed command",
   "bin": {
-    "js-env": "lib/cli.js"
+    "js-env": "lib/index.js"
   },
   "scripts": {
     "build": "tsc",
