@@ -32,8 +32,8 @@ async function init() {
   console.log(env);
   console.log(chalk.green("---------------------------"));
 
-  const command = process.argv[3];
-  const args = process.argv.slice(4);
+  const command = process.argv[2];
+  const args = process.argv.slice(3);
 
   try {
     console.log();
