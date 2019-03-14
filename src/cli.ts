@@ -22,7 +22,7 @@ async function init() {
 
   const env = importedEnv.default || importedEnv;
 
-  const fullCommand = process.argv.slice(3).join(" ");
+  const fullCommand = process.argv.slice(2).join(" ");
 
   console.log();
   console.log(chalk.green("---------------------------"));
