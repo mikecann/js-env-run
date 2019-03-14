@@ -9,7 +9,7 @@ async function init() {
   const envFilePath = process.argv[2];
   if (!envFilePath)
     throw new Error(
-      `Env file path required, e.g. js-env ./myenv.js <my command>`
+      `Env file path required, e.g. js-env-run ./myenv.js <my command>`
     );
 
   const importedEnv = require(path.join(cwdDir, envFilePath));
