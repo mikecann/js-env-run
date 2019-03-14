@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "Loads environment variables from a given ts file then executes the passed command",
   "bin": {
-    "ts-env-cmd": "lib/index.js",
-    "say-hello": "./cli.ts"
+    "ts-env-cmd": "cli.js"
   },
   "scripts": {
     "build": "tsc",
