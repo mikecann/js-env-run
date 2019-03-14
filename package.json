@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Loads environment variables from a given ts file then executes the passed command",
   "bin": {
-    "ts-env-cmd": "-r ts-node/register ./index.ts"
+    "ts-env": "-r ts-node/register ./index.ts"
   },
   "scripts": {
     "build": "tsc",
