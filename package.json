@@ -1,28 +1,28 @@
 {
-  "name": "ts-env-cmd",
+  "name": "js-env",
   "version": "1.0.0",
-  "description": "Loads environment variables from a given file then executes the passed command",
+  "description": "Loads environment variables from a given js file then executes the passed command",
   "bin": {
     "js-env": "lib/index.js"
   },
   "scripts": {
     "build": "tsc",
     "dev": "yarn build -w",
-    "test": "node ./lib/index.js"
+    "test-goodenv": "node ./lib/index.js ./test/goodenv.js ls",
+    "test-badenv": "node ./lib/index.js ./test/badenv.js ls"
   },
   "main": "lib/cli.js",
-  "repository": "git@github.com:mikecann/ts-env-cmd.git",
+  "repository": "git@github.com:mikecann/js-env.git",
   "author": "Mike Cann <mike.cann@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.2",
-    "execa": "^1.0.0",
-    "ts-node": "^8.0.3",
-    "typescript": "^3.3.3333"
+    "execa": "^1.0.0"
   },
   "devDependencies": {
     "@types/execa": "^0.9.0",
     "@types/node": "^11.11.3",
-    "versiony-cli": "^1.3.0"
+    "versiony-cli": "^1.3.0",
+    "typescript": "^3.3.3333"
   }
 }

@@ -9,13 +9,13 @@ async function init() {
   const envFilePath = process.argv[2];
   if (!envFilePath)
     throw new Error(
-      `Env file path required, e.g. ts-env-cmd ./myenv.ts <my command>`
+      `Env file path required, e.g. js-env ./myenv.js <my command>`
     );
 
   const importedEnv = require(path.join(cwdDir, envFilePath));
   if (!importedEnv || typeof importedEnv != "object")
     throw new Error(
-      `Env file '${envFilePath}' must default export an object, e.g. export default { MYVAR: "foo" }`
+      `Env file '${envFilePath}' must default export an object, e.g. module.exports = { MYVAR: "foo" }`
     );
 
   const env = importedEnv.default || importedEnv;
