@@ -6,11 +6,13 @@ async function init() {
   const tsEnvDir = path.join(__dirname, "..");
   const cwdDir = process.cwd();
 
-  const envFilePath = process.argv[2];
-  if (!envFilePath)
-    throw new Error(
-      `Env file path required, e.g. js-env-run ./myenv.js <my command>`
-    );
+  const envFilePath = "./env.js";
+
+  // const envFilePath = process.argv[2];
+  // if (!envFilePath)
+  //   throw new Error(
+  //     `Env file path required, e.g. js-env-run ./myenv.js <my command>`
+  //   );
 
   const importedEnv = require(path.join(cwdDir, envFilePath));
   if (!importedEnv || typeof importedEnv != "object")
