@@ -1,0 +1,44 @@
+version: 2
+jobs:
+  build_and_test:
+    docker:
+      - image: circleci/node:8.10
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - run:
+          name: Authenticate with registry
+          command: |
+            echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/repo/.npmrc
+            cat ~/repo/.npmrc
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run:
+          name: Installing js dependencies
+          command: yarn
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: Building
+          command: yarn build
+
+      - run:
+          name: Bumping patch version
+          command: yarn versiony --patch=$CIRCLE_BUILD_NUM
+
+      - run:
+          name: Publish package
+          command: npm --verbose publish
+
+    environment:
+      - AWS_REGION: ap-southeast-2
