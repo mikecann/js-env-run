@@ -34,7 +34,11 @@ async function init() {
     );
 
   const origEnv = typeof envHandler == "function" ? envHandler() : envHandler;
-  const env = { ...origEnv, ...pick(process.env, ...Object.keys(origEnv)) };
+  console.log("origEnv", origEnv);
+  const picked = pick(process.env, ...Object.keys(origEnv));
+  console.log("picked", picked);
+  const env = { ...origEnv, ...picked };
+  console.log("env", env);
 
   const fullCommand = process.argv.slice(2).join(" ");
 
