@@ -26,7 +26,7 @@ async function init() {
   const envHandler = importedEnv.default || importedEnv;
   if (
     !importedEnv ||
-    (typeof envHandler == "object" || typeof envHandler == "function")
+    !(typeof envHandler == "object" || typeof envHandler == "function")
   )
     throw new Error(
       `Env file '${envFilePath}' must default export an object or function, e.g. module.exports = { MYVAR: "foo" } or module.exports = () => ({ MYVAR: "foo" }), it is ` +
