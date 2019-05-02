@@ -2,6 +2,14 @@ import chalk from "chalk";
 import execa from "execa";
 import * as path from "path";
 
+function pick<T, K extends keyof T>(obj: T, ...keys: K[]): Pick<T, K> {
+  const ret: any = {};
+  keys.forEach(key => {
+    ret[key] = obj[key];
+  });
+  return ret;
+}
+
 async function init() {
   const tsEnvDir = path.join(__dirname, "..");
   const cwdDir = process.cwd();
@@ -24,7 +32,8 @@ async function init() {
     );
 
   const envHandler = importedEnv.default || importedEnv;
-  const env = typeof envHandler == "function" ? envHandler() : envHandler;
+  const origEnv = typeof envHandler == "function" ? envHandler() : envHandler;
+  const env = { ...origEnv, ...pick(process.env, ...Object.keys(origEnv)) };
 
   const fullCommand = process.argv.slice(2).join(" ");
 
