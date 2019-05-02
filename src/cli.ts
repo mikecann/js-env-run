@@ -34,11 +34,13 @@ async function init() {
     );
 
   const origEnv = typeof envHandler == "function" ? envHandler() : envHandler;
-  console.log("origEnv", origEnv);
   const picked = pick(process.env, ...Object.keys(origEnv));
-  console.log("picked", picked);
-  const env = { ...origEnv, ...picked };
-  console.log("env", env);
+  const reduced = Object.keys(picked).reduce(
+    (prev, curr) =>
+      picked[curr] == undefined ? prev : { ...prev, [curr]: picked[curr] },
+    {}
+  );
+  const env = { ...origEnv, ...reduced };
 
   const fullCommand = process.argv.slice(2).join(" ");
 
