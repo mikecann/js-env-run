@@ -15,12 +15,16 @@ async function init() {
   //   );
 
   const importedEnv = require(path.join(cwdDir, envFilePath));
-  if (!importedEnv || typeof importedEnv != "object")
+  if (
+    !importedEnv ||
+    (typeof importedEnv == "object" || typeof importedEnv == "function")
+  )
     throw new Error(
-      `Env file '${envFilePath}' must default export an object, e.g. module.exports = { MYVAR: "foo" }`
+      `Env file '${envFilePath}' must default export an object or function, e.g. module.exports = { MYVAR: "foo" }`
     );
 
-  const env = importedEnv.default || importedEnv;
+  const envHandler = importedEnv.default || importedEnv;
+  const env = typeof envHandler == "function" ? envHandler() : envHandler;
 
   const fullCommand = process.argv.slice(2).join(" ");
 
